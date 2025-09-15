@@ -1,0 +1,21 @@
+# Use official GCC image for C++ development
+FROM gcc:latest
+
+# Set working directory
+WORKDIR /app
+
+# Copy source code
+COPY ..
+
+# Install dependencies (if any)
+RUN apt-get update && apt-get install -y/
+    cmake \
+    make \
+    libboost-all-dev
+    # Add other dependencies as needed
+
+# Build the application (replace main.cpp with your entry file)
+RUN g++ src/* -o acmanGame -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -pthread
+
+# Set default command to run the game
+CMD ["./acmanGame"]
